@@ -50,11 +50,10 @@ M-x で実行するやつです。5つあります。
 sampleフォルダのhello.cは10秒前後、fizzbuzz.cは大体十数分かかるので、
 ちょっと複雑なコードをコンパイルするときは覚悟して実行しましょう。
 
-なおxyzzy lispにコンパイルした場合、main関数は
+なおxyzzy lispにコンパイルした場合、main関数は`elvm-compiled`パッケージに定義されます。
 
-`elvm-compiled:elvm-main (&optional input-stream output-stream)`
+`elvm-compiled:main (&optional input-stream output-stream)`
 
-になります。
 この関数は入力ストーリームと出力ストリームを引数に取り、それぞれ
 標準入力と標準出力として扱います。
 (省略した場合は`*standard-input*`と`*standard-output*`を使用します。)
@@ -62,9 +61,9 @@ sampleフォルダのhello.cは10秒前後、fizzbuzz.cは大体十数分かか�
 実行するには、コンパイル結果のバッファでeval-bufferもしくは
 byte-compile-file & load)した後、scratchバッファで
 ```
-(with-input-from-string (is "stdin text")
+(with-input-from-string (istr "stdin text")
   (with-output-to-buffer ((create-new-buffer "*stdout*"))
-    (elvm-compiled:elvm-main is)))
+    (elvm-compiled:main istr)))
 ```
 のようにして呼び出してみてください。
 
