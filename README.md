@@ -58,7 +58,7 @@ sampleフォルダのhello.cは10秒前後、fizzbuzz.cは大体十数分かか�
 標準入力と標準出力として扱います。
 (省略した場合は`*standard-input*`と`*standard-output*`を使用します。)
 
-実行するには、コンパイル結果のバッファでeval-bufferもしくは
+実行するには、コンパイル結果のバッファでeval-buffer(もしくは
 byte-compile-file & load)した後、scratchバッファで
 ```
 (with-input-from-string (istr "stdin text")
